@@ -32,12 +32,22 @@ num1 = float(input("What's the first number? "))
 for symbol in operations:
     print(symbol)
 
-operations_symbol = input("Pick an operator from above ")
 
-calculation_function = operations[operations_symbol]
+# Continue calculating feature
+should_continue = True
 
-num2 = float(input("What's the second number? "))
+while should_continue:
+    operations_symbol = input("Pick an operator from above ")
 
-answer = calculation_function(num1, num2)
+    calculation_function = operations[operations_symbol]
 
-print(f"{num1} {operations_symbol} {num2} = {answer}")
+    num2 = float(input("What's the second number? "))
+
+    answer = calculation_function(num1, num2)
+
+    print(f"{num1} {operations_symbol} {num2} = {answer}")
+
+    if input(f"Type 'y' to continue calculating with {answer} or type 'n' to start a new calculation: ") == "y":
+        num1 = answer
+    else:
+        should_continue = False
